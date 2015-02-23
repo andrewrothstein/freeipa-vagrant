@@ -9,7 +9,6 @@
 
 Vagrant.configure(2) do |config|
   config.vm.box = "vStone/centos-7.x-puppet.3.x"
-
   # The hostname MUST match the main IP address of the host, and be specified
   # as such in /etc/hosts. As such, this Vagrantfile depends on the 
   # vagrant-hosts plugin.
@@ -21,7 +20,9 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sed -i 's/127.0.1.1.*freeipa.example.org.*//' /etc/hosts
   SHELL
-
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+  end
 
   # Forwarding interesting ports from 
   # http://docs.fedoraproject.org/en-US/Fedora/15/html/FreeIPA_Guide/installing-ipa.html#tab.ipa-ports:

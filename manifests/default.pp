@@ -8,7 +8,17 @@ class { 'ipa':
 }
 
 package { 'epel-release':
-  ensure => installed
+  ensure => installed,
+}
+
+package { 'haveged':
+  ensure => present,
+  require => File['/etc/yum.repos.d/epel.repo']
+}
+
+service { 'haveged':
+  ensure => running,
+  require => Package['haveged'],
 }
 
 file { '/etc/yum.repos.d/epel.repo':
@@ -21,7 +31,7 @@ failovermethod=priority
 enabled=1
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7',
-  require => Package['epel-release']
+  require => Package['epel-release'],
 }
 
 
