@@ -12,13 +12,13 @@ Vagrant.configure(2) do |config|
   # The hostname MUST match the main IP address of the host, and be specified
   # as such in /etc/hosts. As such, this Vagrantfile depends on the 
   # vagrant-hosts plugin.
-  config.vm.hostname = "freeipa.example.org"
-  config.vm.network "private_network", ip: "192.168.65.4"
+  config.vm.hostname = "freeipa.vagrant.local"
+  config.vm.network "private_network", ip: "192.168.33.2"
   config.vm.provision :hosts do |provisioner|
-	  provisioner.add_host '192.168.65.4', ['freeipa.example.org']
+	  provisioner.add_host '192.168.33.2', ['freeipa.vagrant.local']
   end
   config.vm.provision "shell", inline: <<-SHELL
-    sed -i 's/127.0.1.1.*freeipa.example.org.*//' /etc/hosts
+    sed -i 's/127.0.1.1.*freeipa.vagrant.local.*//' /etc/hosts
   SHELL
   config.vm.provider "virtualbox" do |v|
     v.memory = 1024
