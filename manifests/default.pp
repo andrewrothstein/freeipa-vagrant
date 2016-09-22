@@ -1,9 +1,9 @@
 class { 'ipa':
   master  => true, # Only one master per Puppet master
-  domain  => 'example.org',
-  realm   => 'EXAMPLE.ORG',
-  adminpw => 'password',
-  dspw    => 'password',
+  domain  => 'vagrant.test',
+  realm   => 'VAGRANT.TEST',
+  adminpw => '71908174-80b8-11e6-a7fb-2320702943c7',
+  dspw    => '79ebae3e-80b8-11e6-a0aa-3b61d8624619',
   require => File['/etc/yum.repos.d/epel.repo']
 }
 
