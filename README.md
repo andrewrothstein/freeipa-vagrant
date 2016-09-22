@@ -26,12 +26,12 @@ About
 
 A really basic FreeIPA server.
 
-Sets up a domain named "example.org", with both the Directory Manager and admin passwords set to "password".
+Sets up a domain named "vagrant.test", with both the Directory Manager and admin passwords set. See [manifests/default.pp] for the passwords.
 
 This also forwards ports 443 and 389 as 4443 and 13389, respectively.
 
 You'll probably need to insert an entry into your local hosts file that looks like this in order to use the FreeIPA UI:
 
 ```
-192.168.65.4 freeipa.example.org
+192.168.33.2 freeipa.vagrant.test
 ```
